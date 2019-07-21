@@ -152,6 +152,14 @@ export class MediaRepository extends Repository {
     });
     return body;
   }
+  
+  
+  public async comments(id: string): Promise<MediaRepositoryCommentsResponseRootObject> {
+    const { body } = await this.client.request.send<MediaRepositoryCommentsResponseRootObject>({
+      url: `/api/v1/media/${id}/comments/`,
+    });
+    return body;
+  }
 
   public async blocked() {
     const { body } = await this.client.request.send<MediaRepositoryBlockedResponse>({
